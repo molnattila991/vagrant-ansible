@@ -16,7 +16,17 @@ Vagrant.configure("2") do |config|
 	config.vm.provision "shell", inline: <<-'SCRIPT'
 		cat /home/vagrant/.ssh/ansible_ssh_key.pub >> /home/vagrant/.ssh/authorized_keys
 		sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
-		apt-get -y install mc
+		#apt-get -y install mc
+		sudo mv /bin/python3.8 /bin/python
+		sudo apt-get -y install python3-distutils
+		sudo apt-get -y  install python3-apt
+		curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+		python get-pip.py --user
+		python get-pip.py --user
+		python -m pip install --user ansible
+		sudo python get-pip.py
+		sudo python get-pip.py
+		sudo python -m pip install ansible
 	SCRIPT
   end
 end
