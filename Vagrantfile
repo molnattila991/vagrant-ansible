@@ -29,6 +29,8 @@ Vagrant.configure("2") do |config|
 		sudo python get-pip.py
 		#sudo python -m pip install ansible
 		pip install ansible
+		
+		ansible-galaxy collection install community.general
 	SCRIPT
   end
 end
